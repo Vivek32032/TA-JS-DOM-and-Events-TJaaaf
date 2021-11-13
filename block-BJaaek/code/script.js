@@ -18,12 +18,10 @@ let getRandomColor=() => {
 firstBox.addEventListener("click", function(){
     let color = getRandomColor();
     firstBox.style.backgroundColor = color;
-    color1.innerText = color;
 
 });
 
 secondBox.addEventListener("mousemove", function(){
-    color = getRandomColor();
+    let color = getRandomColor();
     secondBox.style.backgroundColor = color;
-    color2.innerText = color;
 }); 
