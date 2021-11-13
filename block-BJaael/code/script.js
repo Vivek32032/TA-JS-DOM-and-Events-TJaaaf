@@ -27,12 +27,12 @@ let getRandomNumber=() => {
     return randomColor;
 }
 
-
-allBox.forEach((a,i)=>{
-    allBox[i].addEventListener("mousemove", function(){
+function handleMouseMove() {
+  allBox.forEach((a,i)=>{
     let color = getRandomColor();
     a.innerHTML= getRandomNumber();
-    allBox[i].style.backgroundColor = color;
-}) })
+    a.style.backgroundColor = color;
+}) }
 
 
+section.addEventListener("mousemove", handleMouseMove)
