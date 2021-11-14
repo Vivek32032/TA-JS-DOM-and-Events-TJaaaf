@@ -23,12 +23,12 @@ let getRandomColor=() => {
 }
 
 let getRandomNumber=() => {
-    let randomColor = Math.floor(Math.random() * 500);  
-    return randomColor;
+    let randomNumber = Math.floor(Math.random() * 500);  
+    return randomNumber;
 }
 
 function handleMouseMove() {
-  allBox.forEach((a,i)=>{
+  allBox.forEach((a)=>{
     let color = getRandomColor();
     a.innerHTML= getRandomNumber();
     a.style.backgroundColor = color;
