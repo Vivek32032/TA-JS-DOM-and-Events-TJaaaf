@@ -20,8 +20,8 @@ function handleSubmit(event){
    list[4].innerText=`color: ${userInfo.color}`
    list[5].innerText=`Rating: ${userInfo.rate}`
    list[6].innerText=`Book Genre: ${userInfo.genre}`
-   list[7].innerText=`You agree to Terms and Conditions`
-   message.style.display= "block"
+   list[7].innerText=`${userInfo.terms? 'You agree to Terms and Conditions':'You have not agreed to Terms and Conditions'}`
+   message.style.display= "block";
 
 }
 form.addEventListener("submit",handleSubmit);
