@@ -107,6 +107,7 @@ input[type='text'] {
   color: #657ced;
   text-align: right;
   margin: 0;
+  pointer-events: stroke;
 }
 ul .name{
   font-size: 30px;
