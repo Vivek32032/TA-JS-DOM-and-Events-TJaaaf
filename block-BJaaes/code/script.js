@@ -3,38 +3,39 @@ let input = document.querySelectorAll("input");
 let allSmall = Array.from(document.querySelectorAll("small"))
 
 let usernameError = "";
+function displayError(userinfo){
+    userinfo.classList.remove("success")
+    userinfo.classList.add("error")
+}
+function displaySeccess(userinfo){
+   userinfo.classList.remove("error")
+   userinfo.classList.add("success")
+}
 
 function validateUserName(str) {
     if (str.length < 4) {
-        input[0].classList.add("error");       
         return `Username can't be less than 4 characters`
     }
     else if (typeof(str) == "number") {
-        input[0].classList.add("error")
         return `You can't use number in the name field`
     }
     else {
-        input[0].classList.remove("error")
-        input[0].classList.add("success")
+       displaySeccess(form.elements["username"])
     return ""}
 }
 function validateEmail(str) {
     if (!(str.includes("@"))) {
-        input[1].classList.add("error")
         return `Not a valid Email`
     } 
     else if (str.length < 6) {
-        input[1].classList.add("error")
         return `Enter atleast 6 caracter`
     }
     else {
-        input[1].classList.remove("error")
-        input[1].classList.add("success")
+        displaySeccess(form.elements["email"])
     return ""}
 }
 function validatePhone(num) {
     if (isNaN(+num)) {
-        input[2].classList.add("error");       
         return `Phone number can only contain numbers`
     }
     else if (num.length < 7) {
@@ -42,8 +43,7 @@ function validatePhone(num) {
         return `Length of phone number can't be less than 7`
     } 
     else {
-        input[2].classList.remove("error")
-        input[2].classList.add("success")
+        displaySeccess(form.elements["phone"])
     return ""}
 }
 
@@ -55,10 +55,8 @@ function validatePassword(pass,cPass){
         return `Password and confirm password must be same.`
     }else{
         allSmall[4].innerText = ""
-        input[3].classList.remove("error")
-        input[3].classList.add("success")
-        input[4].classList.remove("error")
-        input[4].classList.add("success")
+        displaySeccess(form.elements["pass"])
+        displaySeccess(form.elements["cPass"])
     }
 }
 function handleSubmit(event) {
@@ -72,22 +70,24 @@ function handleSubmit(event) {
     allSmall.forEach((a) => a.innerText = "")
     if (validateUserName(username.value)) {
         allSmall[0].innerText = validateUserName(username.value);
-
+        displayError(form.elements["username"])
     }
     else if (validateEmail(email.value)) {
         allSmall[1].innerText = validateEmail(email.value)
+        displayError(form.elements["email"])
     }
     else if (validatePhone(phone.value)) {
         allSmall[2].innerText = validatePhone(phone.value)
+        displayError(form.elements["phone"])
+
     }else if (validatePassword(pass.value,cPass.value)){
         allSmall[4].innerText = validatePassword(pass.value,cPass.value)
-
+        displayError(form.elements["pass"])
+        displayError(form.elements["cPass"])
     }
  
     else alert(`User Added Successfully!`)
 }
-
-
 
 form.addEventListener("submit", handleSubmit);
 
