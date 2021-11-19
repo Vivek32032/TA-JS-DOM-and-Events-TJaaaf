@@ -1,38 +1,42 @@
+function main(){
+
+
 let input = document.querySelector(".text");
 let rootElm = document.querySelector("ul");
 
 
-
-
-
-let allTodos = [
-];
+let allTodos =localStorage.getItem("allTodos")?JSON.parse(localStorage.getItem("allTodos")):[];
 
 input.addEventListener("keyup",(event)=>{
-   if(event.keyCode === 13){
+    let value = event.target.value;
+   if(event.keyCode === 13 && value!==""){
       allTodos.push({
-          name: event.target.value,
+          name: value,
           isDone:false
       })
-      event.target.value = "";
-      createToDoUI(allTodos);
+      value = "";
+      createToDoUI();
     }
+    localStorage.setItem("allTodos",JSON.stringify(allTodos))
 })
 
 
 function deleteData(event){
     id = event.target.dataset.id;
     allTodos.splice(id,1)
-    createToDoUI(allTodos);
+    localStorage.setItem("allTodos",JSON.stringify(allTodos))
+   createToDoUI();
 }
+
 function checkboxUI(event){
     let id = event.target.dataset.id
     allTodos[id].isDone = ! allTodos[id].isDone
-    createToDoUI(allTodos);
+    localStorage.setItem("allTodos",JSON.stringify(allTodos))
+    createToDoUI();
 }
 
 
-function createToDoUI(workList){
+function createToDoUI(workList = allTodos){
     rootElm.innerHTML ="";
     workList.forEach((todo,i) => {
         let li = document.createElement("li");
@@ -64,10 +68,10 @@ nav.addEventListener("click",(event)=>{
     
     let displayAll = document.querySelector(".all");
     let displayCompleted = document.querySelector(".show-completed");
-    let completedTodo = [...allTodos].filter((a)=> a.isDone);
+    let completedTodo = allTodos.filter((a)=> a.isDone);
     let clearCompleted = document.querySelector(".clear-completed");
     let displayActive = document.querySelector(".active");
-    let uncompletedTodo = [...allTodos].filter((a)=> !a.isDone);
+    let uncompletedTodo = allTodos.filter((a)=> !a.isDone);
 
 
 
@@ -81,14 +85,15 @@ nav.addEventListener("click",(event)=>{
          createToDoUI(uncompletedTodo);
     }
     else if(event.target===clearCompleted){
-        allTodos.forEach((a,i)=>{
-           if(a.isDone){
-               allTodos.splice(i,1)
-            }
-        })
-        createToDoUI(allTodos);
+       allTodos= allTodos.filter((a,i)=> !a.isDone)
+       localStorage.setItem("allTodos",JSON.stringify(allTodos))
+        createToDoUI();
     }else{
-        createToDoUI(allTodos);
+        createToDoUI();
     }
     
 })
+createToDoUI(allTodos);
+}
+main();
+
