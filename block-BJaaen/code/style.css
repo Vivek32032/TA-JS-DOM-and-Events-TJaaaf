@@ -1,0 +1,27 @@
+body{
+text-align: center;
+}
+section{
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+div i{
+    font-size: 75px;
+    padding: 10px;
+}
+.reset i{
+    font-size: 40px;
+    margin: 20px;
+
+}
+.you i {
+    color: blue;
+}
+.computer i {
+    color: red;
+}
+h3{
+    font-size: 50px;
+    text-align: center;
+}
