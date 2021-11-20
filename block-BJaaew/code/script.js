@@ -21,7 +21,7 @@ houseName.forEach((a,i) => {
       removeActive();
       button.classList.add("active")
       let house = peopleByHouse[id]
-      
+
       createUI(house);
   })
   nav.append(button)
@@ -55,6 +55,7 @@ function createUI(arr = allPeople){
 createUI();
 
 let input = document.querySelector("input");
+ 
 input.value=localStorage.getItem("text")
 input.addEventListener("keyup",(event)=>{
     if(input.value.trim().length>0){
