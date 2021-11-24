@@ -1,0 +1,9 @@
+{
+    "name": "To Do App",
+    "description": "Works to do",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "chrome_url_overrides": {
+        "newtab":"index.html"
+    }
+}
