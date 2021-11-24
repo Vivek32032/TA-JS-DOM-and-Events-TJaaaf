@@ -97,8 +97,9 @@ i{
     z-index: -5;
 }
 .match{
-    display: none;
+    background-color: rgb(236, 103, 103);
 }
+
 span{
     display: inline-block;
     font-size: 20px;
