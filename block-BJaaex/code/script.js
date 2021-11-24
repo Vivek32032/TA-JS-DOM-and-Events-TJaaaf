@@ -76,8 +76,9 @@ gameGrid.forEach((icon)=> {
         if(selected.length===2){
             if(selected[0].dataset.id==selected[1].dataset.id){
                 selected.forEach((match)=>{
-                match.parentElement.style.backgroundColor="rgb(236, 103, 103)";
+                match.parentElement.classList.add("match");
                 match.style.display="none";
+                showResult();
                 })
             }
         }else if(selected.length>2) {
@@ -91,9 +92,7 @@ gameGrid.forEach((icon)=> {
 })
 function displayTime(){
     var second = 00;
-    var minute = 00;
-    console.log(minute)
-   
+    var minute = 00;   
     setInterval(function(){
       second +=1;
      if(minute === 5){
@@ -119,8 +118,8 @@ function final(str) {
     result.style.display ="block"; 
 }
 function showResult(){
-    let allDiv = document.querySelectorAll(".match")
-    if (allDiv.length===24){
+    let allli = document.querySelectorAll(".match")
+    if(allli.length==24){
         final("You Won!");
     }
 }
